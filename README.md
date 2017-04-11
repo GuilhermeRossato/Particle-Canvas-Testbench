@@ -10,7 +10,7 @@ With the number of particle and the FPS, you can compare any setup.
 
 # Demo
 
-[Basic Version](https://rawgit.com/GuilhermeRossato/ParticleCanvasTextbench/master/Basic/index.html)
+[Basic Version](https://rawgit.com/GuilhermeRossato/ParticleCanvasTestbench/master/Basic/index.html)
 
 # How to use
 
