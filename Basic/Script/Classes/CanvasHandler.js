@@ -23,9 +23,9 @@ CanvasHandler.prototype = {
 		this.tick();
 	},
 	clear: function() {
-		this.ctx.clearRect(-1,-1,this.width+2, this.height+2);
-		//this.ctx.fillStyle = "rgba(255,255,255,0.2)";
-		//this.ctx.fillRect(-1,-1,this.width+2, this.height+2);
+		//this.ctx.clearRect(-1,-1,this.width+2, this.height+2);
+		this.ctx.fillStyle = "rgba(255,255,255,0.2)";
+		this.ctx.fillRect(-1,-1,this.width+2, this.height+2);
 	},
 	draw: function() {
 		this.systems.forEach(system => system.draw(this.ctx));
