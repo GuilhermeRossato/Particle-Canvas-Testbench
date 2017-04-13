@@ -1,16 +1,11 @@
 # Basic Particle Testbench
 
-> CPU usage:	Very High
+> CPU usage:	High
 
-> GPU usage:	Low
-
-> Canvas Size:	500 x 309 (FIXED)
+> GPU usage:	Low to Medium
 
 [Click here to run](https://rawgit.com/GuilhermeRossato/ParticleCanvasTextbench/master/Basic/index.html)
 
-# Differences from others:
-
-This testbench demo focuses on good coding practices. Neither GPU nor CPU optimization methods were used. The canvas is very small.
 
 # Testbench
 

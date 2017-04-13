@@ -23,7 +23,11 @@ Interactor.prototype = {
 		this.buttons.forEach((button, i) => {
 			if (i < configs.length) {
 				this.forEachPropertyInObject(configs[i], (property, value) => {
-					button[property] = value;
+					if (property === "init" && typeof value === "function") {
+						value.call(button);
+					} else {
+						button[property] = value;
+					}
 				});
 			}
 		});

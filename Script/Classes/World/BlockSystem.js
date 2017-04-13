@@ -6,14 +6,15 @@ function BlockSystem() {
 
 BlockSystem.prototype = {
 	constructor:BlockSystem,
-	generateWorld: function(left, top, right, bottom, safe) {
+	generateWorld: function(left, top, right, bottom, safe, minSize, maxSize) {
+		this.blocks = [];
 		let tries = 0;
 		let minConnection = 10
 		while (this.blocks.length < this.maxBlocks && tries < 100000) {
 			tries++;
 			let rootBlock = {};
-			rootBlock.width = 5+Math.random()*20|0;
-			rootBlock.height = 5+Math.random()*20|0;
+			rootBlock.width = b(minSize, maxSize, Math.random())|0;
+			rootBlock.height = b(minSize, maxSize, Math.random())|0;
 			rootBlock.left = interpolation.add(0, left).add(1, right-rootBlock.width).at(Math.random())|0;
 			rootBlock.top = interpolation.add(0, left).add(1, right-rootBlock.width).at(Math.random())|0;
 			this.addBlock(rootBlock);

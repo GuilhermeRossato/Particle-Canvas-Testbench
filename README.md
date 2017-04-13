@@ -4,6 +4,10 @@ This particle testbench renders N particles in a world made out of squares.
 It varies the amount of particles so that a FPS treshold is met.
 With the number of particle and the FPS, you can compare any setup.
 
+This testbench focuses on High CPU usage and Low to Medium GPU usage.
+
+This experiment should be used to compare different computer's ability to render particles in the canvas.
+
 # Preview
 
 ![Preview v0.1](https://raw.githubusercontent.com/GuilhermeRossato/ParticleCanvasTestbench/master/Images/preview1.png)
@@ -14,10 +18,12 @@ With the number of particle and the FPS, you can compare any setup.
 
 # How to use
 
-1. Choose one of the demos to use as parameter.
-2. (optional) Choose a target FPS (default is 60 when you open a demo)
-3. Run the demo for at least a minute.
-4. The performance score will be shown at the top left
+1. Run the Demo.
+2. Configure to your liking (lower FPS implies in better result accuracy)
+3. Remember configuration.
+4. Run the experiment for at least 1 minute (so that particle count stabilizes)
+5. Note down the particle count in the chosen configuration.
+6. Do the same to another computer and compare both particle counts.
 
 # The Setup
 1. All particles have a square on them, with a trail (polygon) of up to 10 points

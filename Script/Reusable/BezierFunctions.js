@@ -3,12 +3,20 @@ var b = (i,j,t)=>(i + (j - i) * t)
 
 Object.defineProperty(window, "interpolation", { get: function() {
 	var pts = [];
+	let scaleX = 1;
+	let scaleY = 1;
 	return {
 		add: function(x, y) {
-			pts.push([x, y]);
+			pts.push([x*scaleX, y*scaleY]);
 			return this;
 		},
-		_update: function() {
+		scaleY: function(value) {
+			scaleY = value;
+			return this;
+		},
+		scaleX: function(value) {
+			scaleX = value;
+			return this;
 		},
 		at: function(x) {
 			if (pts.length === 1)
