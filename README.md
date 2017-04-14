@@ -14,7 +14,7 @@ This experiment should be used to compare different computer's ability to render
 
 # Demo
 
-[Basic Version](https://rawgit.com/GuilhermeRossato/ParticleCanvasTestbench/master/Basic/index.html)
+[Basic Version](https://rawgit.com/GuilhermeRossato/ParticleCanvasTestbench/master/index.html)
 
 # How to use
 

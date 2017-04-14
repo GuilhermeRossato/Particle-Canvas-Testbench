@@ -1,13 +1,4 @@
-# Basic Particle Testbench
-
-> CPU usage:	High
-
-> GPU usage:	Low to Medium
-
-[Click here to run](https://rawgit.com/GuilhermeRossato/ParticleCanvasTextbench/master/Basic/index.html)
-
-
-# Testbench
+# Developer's Computer
 
 The following specs are to be considered:
 
@@ -24,6 +15,8 @@ BIOS:	American Megatrends Inc. v1.00 - 2010
 OS:		Windows 7 Professional 2009 - 64 bits
 
 Browsr:	Google Chrome 57.0.2987.133 (Official version) 64 bits
+
+Canvas:	Balanced size
 
 # Results
 
