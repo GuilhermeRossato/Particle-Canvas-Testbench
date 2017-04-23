@@ -1,4 +1,9 @@
 const ButtonGenerator = {
+	getNextFpsLabel: function(current) {
+		let nexts = [57, 5, 24, 30, 45];
+		let index = nexts.indexOf(current);
+		return `Set Target FPS = ${(index === -1)?nexts[0]:nexts[(index+1)%nexts.length]}`;
+	},
 	generate: function(application) {
 		application.interactor = new Interactor(150);
 		if (typeof targetFPS !== "number") {
@@ -12,12 +17,12 @@ const ButtonGenerator = {
 				if (typeof cookieValue === "string" && cookieValue.length > 1 && (!(isNaN(parseInt(cookieValue))))) {
 					targetFPS = parseInt(cookieValue);
 				}
-				this.value = `Set Target FPS = ${targetFPS===60?24:(targetFPS===24?30:(targetFPS===30?45:60))}`;
+				this.value = ButtonGenerator.getNextFpsLabel(targetFPS);
 			},
 			onclick: function() {
 				targetFPS = parseInt(this.value.substr(this.value.length-2,2));
 				setCookie("pct_fpsTarget", targetFPS.toString(), 7);
-				this.value = `Set Target FPS = ${targetFPS===60?24:(targetFPS===24?30:(targetFPS===30?45:60))}`;
+				this.value = ButtonGenerator.getNextFpsLabel(targetFPS);
 			}
 		}, {
 			value: "Undefined",
@@ -26,11 +31,11 @@ const ButtonGenerator = {
 				if (cookieValue === "1") {
 					this.value = "Balance";
 					CanvasHandler.resize(window.innerWidth-8, window.innerHeight-8);
-					application.setup();
+					updateCanvasSize();
 				} else if (cookieValue === "2") {
 					this.value = "Maximize GPU";
 					CanvasHandler.resize(200, 200);
-					application.setup();
+					updateCanvasSize();
 				} else {
 					this.value = "Minimize GPU";
 				}
@@ -49,11 +54,11 @@ const ButtonGenerator = {
 					CanvasHandler.resize(200, 200);
 					setCookie("pct_csize", "2", 7);
 				}
-				application.setup();
+				updateCanvasSize();
 			}
 		}, {
 			value: "Reset",
-			onclick: () => application.setup()
+			onclick: () => updateCanvasSize()
 		});
 	}
 }

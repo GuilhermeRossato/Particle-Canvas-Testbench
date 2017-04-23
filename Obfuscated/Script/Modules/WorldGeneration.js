@@ -21,7 +21,19 @@ var WorldGeneration = {
 		}
 		return interpolation.add(0, top).add(1, bottom-height).at(chance)|0;
 	},
-	generate: function(application, blockList, canvas, safe) {
+	addBlock: function(list, config) {
+		list.push({
+			size: {
+				width: config.width,
+				height: config.height
+			},
+			position: {
+				left: config.left,
+				top: config.top
+			}
+		})
+	},
+	generate: function(blockList, canvas, safe) {
 		let left, top, right, bottom, minSize, maxSize, maxblockList, smallestConnection;
 		maxblockList = 90;
 		smallestConnection = 10;
@@ -33,15 +45,15 @@ var WorldGeneration = {
 		bottom = canvas.height;
 		let tries = 0;
 		blockList.length = 0;
-		while (blockList.length < maxblockList && tries < 100000) {
+		while (blockList.length < maxblockList && tries < 10000) {
 			tries++;
 			let rootBlock = {};
 			rootBlock.width = b(minSize, maxSize, Math.random())|0;
 			rootBlock.height = b(minSize, maxSize, Math.random())|0;
 			rootBlock.left = this.getX(left, top, right, bottom, rootBlock.width, rootBlock.height);
 			rootBlock.top = this.getY(left, top, right, bottom, rootBlock.width, rootBlock.height);
-			blockList.push(new Block(rootBlock));
-			while (Math.random() < 0.35 && blockList.length < maxblockList && tries < 100000) {
+			this.addBlock(blockList, rootBlock);
+			while (Math.random() < 0.35 && blockList.length < maxblockList && tries < 10000) {
 				tries++;
 				let side = ["left", "top", "right", "bottom"][interpolation.add(0,0).add(1,4).at(Math.random())|0];
 				let newBlock = {};
@@ -62,12 +74,12 @@ var WorldGeneration = {
 				} else
 					debugger;
 				if (!(safe.x > newBlock.left && safe.x < newBlock.left + newBlock.width && safe.y > newBlock.top && safe.y < newBlock.top + newBlock.height)) {
-					blockList.push(new Block(newBlock));
+					this.addBlock(blockList, newBlock);
 					rootBlock = newBlock;
 				}
 			}
 		};
-		if (tries >= 100000)
+		if (tries >= 10000)
 			debugger;
 	}
 }

@@ -60,7 +60,7 @@ Particle.prototype = {
 		ctx.restore();
 	},
 	draw: function(ctx) {
-		ctx.strokeStyle = "#FF0000";
+		ctx.strokeStyle = "#00FF00";
 		ctx.fillStyle = "rgba(90,0,0,0.5)";
 		let past = this.getLastPositions();
 		//ctx.beginPath();

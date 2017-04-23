@@ -17,23 +17,26 @@ const ParticleGeneration = {
 		return interpolation.add(0, 0.15*2).add(0.6, 0.75*2).add(1, 1*2).at(Math.random());
 		//return interpolation.scaleY(2).add(0, 0.2).add(0.6, 0.75).add(1, 1).at(Math.random());
 	},
-	setParticlePosition: function(config) {
-		config.x = this.spawnPoint.x;
-		config.y = this.spawnPoint.y;
-	},
-	generate: function(application, particleSystem) {
-		let particleList = particleSystem.particles;
-		if (particleList.length < this.maxParticles) {
-			let toAdd = Math.min(3,Math.ceil(this.maxParticles - particleList.length / 5));
+	generate: function(array) {
+		if (array.length < this.maxParticles) {
+			let toAdd = Math.min(3,Math.ceil(this.maxParticles - array.length / 5));
 			for (let i = 0 ; i < toAdd; i++) {
-				let particleConfig = {
-					x: this.getX(),
-					y: this.getY(),
-					size: this.getSize(),
-					angle: this.getAngle(),
-					speed: this.getSpeed()
-				};
-				particleSystem.addParticle(particleConfig);
+				let angle = this.getAngle();
+				let speed = this.getSpeed();
+				array.push({
+					updateCount: 0,
+					dead: false,
+					angleDeviation: 0,
+					maxAngleDeviation: Math.PI/8,
+					position: {x: this.getX()||0, y: this.getY()||0},
+					size: this.getSize() || 5,
+					angle: angle || 0,
+					angleStart: angle,
+					speed: speed || 2.5,
+					velocity: {x: Math.cos(angle)*speed, y: Math.sin(angle)*speed},
+					angleAcceleration: 0,
+					pastPosition: new RoundRobin(10)
+				});
 			}
 		}
 	}
